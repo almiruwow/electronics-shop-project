@@ -19,9 +19,14 @@ def test_item(class_fixture):
     assert class_fixture.name == 'Ноутбук'
     assert class_fixture.calculate_total_price() == 10000000
     assert class_fixture.all[0] == class_fixture
+    assert class_fixture.apply_discount() is None
 
 
 def test_new_methods(new_fixture):
     assert len(new_fixture.name) == 10
     assert new_fixture.name == 'СуперСмарт'
     assert new_fixture.string_to_number('5') == 5
+    assert new_fixture.instantiate_from_csv(path='src/items.csv') is None
+    assert type(new_fixture.string_to_number(numb='5.0')) == float
+    new_fixture.name = 'Супер'
+    assert len(new_fixture.name) == 5
